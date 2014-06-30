@@ -1,0 +1,14 @@
+{
+  "name": "outdated-browser",
+  "homepage": "https://github.com/burocratik/outdated-browser",
+  "_release": "8e6c2d9b78",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "8e6c2d9b786cc64ae0e6dac940599babf6397b15"
+  },
+  "_source": "git://github.com/burocratik/outdated-browser.git",
+  "_target": "*",
+  "_originalSource": "outdated-browser",
+  "_direct": true
+}

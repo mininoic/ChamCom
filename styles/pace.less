@@ -1,0 +1,21 @@
+/* pace styles */
+@pace-color: #fff;
+@pace-speed: 0.1s;
+
+.pace .pace-progress {
+  background: @pace-color;
+  -moz-box-shadow: @pace-color 1px 0 6px 1px;
+  -ms-box-shadow: @pace-color 1px 0 6px 1px;
+  -webkit-box-shadow: @pace-color 1px 0 6px 1px;
+  box-shadow: @pace-color 1px 0 6px 1px;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  height: 2px;
+
+  -webkit-transition: width @pace-speed;
+  -moz-transition: width @pace-speed;
+  -o-transition: width @pace-speed;
+  transition: width @pace-speed;
+}

@@ -1,0 +1,172 @@
+<header>
+	<nav id="navbar">
+		<div class="brand">
+			<div id="logo"><a href="#">.Cơm</a></div>
+			<p>ngon mỗi ngày</p>
+		</div>
+		<div class="nav-info">
+			<span>Bạn đã tiết kiệm: <span class="yellow" ng-bind="User.saving"></span> | Bạn có: <span class="yellow">2 triệu đ</span></span>				
+		</div>
+		<div class="nav-user">
+			<a href="#" class="user"><img src="img/user.png"></a>
+			<ul class="user-menu">
+				<li><a href="#">nạp tiền</a></li>
+				<li><a href="#">hỗ trợ</a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+<section id="left-bar">
+	<div class="left-wrapper">
+		<div class="discount">
+			<!-- <ul class="promo-menu">
+				<li id="feature"><a href="#">món nổi bật</a></li>
+				<li id="recommend"><a href="#">thực đơn gợi ý</a></li>
+				<li id="priceoff"><a href="#">khuyến mại</a></li>
+			</ul> -->
+			<div class="discount-countdown">
+				<h3>mức chiết khấu</h3>
+				<p>(đang giảm)</p>
+				<p class="discount-value">37,79%</p>
+				<a class="term" href="#">chính sách chiết khấu</a>
+			</div>
+		</div>
+		<div class="menu-cat" ng-if="Ordering.choosing">
+			<ul>
+				<li 
+					ng-repeat="category in Categories.list track by $index"
+				>
+					<a
+						ng-class="{actived:$index==Categories.activeCategory}"
+						ng-click="Categories.activate(category.id,$apply)"
+					>
+						{{category.title}}
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="contact">
+			<p>Hotline: 0988843142</p>
+		</div>
+	</div>
+</section>
+<section id="center-bar">
+	<div class="top-wrapper">
+		<div class="search">
+			<input type="text" class="s" placeholder="tìm kiếm món ăn" ng-model="itemSearch">
+		</div>
+		<div class="arrange">
+			<label>Sắp xếp theo:</label>
+			<span><a href="#">một cách nào đó <b class="caret"></b></a></span>
+			<div class="option">
+
+			</div>
+		</div>
+	</div>
+	<div class="menu-wrapper">
+		<div 
+			class="menu-item"
+			ng-repeat = "item in Menu.currentCategory | search: itemSearch"
+		>
+			<div class="item-left">
+				<img ng-src="{{item.img}}">
+				<p class="item-price">
+					<span ng-bind="formatMoney(item.price)"></span> đ
+				</p>
+			</div>
+			<div class="item-right">					
+				<div class="item-content">
+					<h2 ng-bind="item.name"></h2>
+					<p ng-bind="item.desc"></p>
+				</div>
+				<div class="item-meta">
+					<a href="#" class="add-to-cart">+</a>
+					<a href="#" class="show-info">i</a>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</section>
+<section id="right-bar">
+	<div class="right-wrapper">
+		<div id="order-info">
+			<div class="customer">
+				<h3>Vừ Già Pó</h3>
+				<p>0982385293</p>
+				<p>40/12 Võ Văn Lục</p>
+			</div>
+			<div class="order-date">
+				<p><a href="#">đơn hàng đã đặt</a></p>
+				<p>ngày: <a href="#">18/06/2014</a></p>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div id="order-cart">
+			<div class="order-item">
+				<h2>Cơm trắng muối vừng</h2>
+				<div class="order-item-price">
+					<p>5.000 đ</p>
+				</div>
+				<div class="order-item-delete ninja">
+					<p>Xóa</p>
+				</div>
+				<div class="order-item-quantity">
+					<a href="#"><b class="quantity-inc"></b></a>
+					<span>1</span>
+					<a href="#"><b class="quantity-dec"></b></a>
+				</div>				
+			</div>
+			<div class="order-item">
+				<h2>Cơm trắng muối vừng</h2>
+				<div class="order-item-price ninja">
+					<p>5.000 đ</p>
+				</div>
+				<div class="order-item-delete">
+					<p>Xóa</p>
+				</div>
+				<div class="order-item-quantity">
+					<a href="#"><b class="quantity-inc"></b></a>
+					<span>1</span>
+					<a href="#"><b class="quantity-dec"></b></a>
+				</div>				
+			</div>
+			<div class="order-item">
+				<h2>Cơm trắng muối vừng</h2>
+				<div class="order-item-price">
+					<p>5.000 đ</p>
+				</div>
+				<div class="order-item-delete ninja">
+					<p>Xóa</p>
+				</div>
+				<div class="order-item-quantity">
+					<a href="#"><b class="quantity-inc"></b></a>
+					<span>1</span>
+					<a href="#"><b class="quantity-dec"></b></a>
+				</div>				
+			</div>
+		</div>
+		<div id="order-discount">
+			<div class="order-discount-default">
+				<label>Chiết khấu:</label>
+				<div class="order-discount-value">
+					<p>-39.243 đ</p>
+				</div>
+			</div>
+			<div class="order-discount-coupon">
+				<input type="text" class="coupon" placeholder="bạn có coupon?">
+			</div>
+		</div>
+		<div id="order-summary">
+			<label>Tổng tiền:</label>
+			<div class="order-summary-value">
+				<p>56.365 đ</p>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="order-checkout">
+			<a href="#" class="button cancel">Hủy đơn</a>
+			<a href="bill.html" class="button checkout">Đặt cơm</a>
+		</div>
+	</div>
+</section>
