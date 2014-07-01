@@ -109,21 +109,24 @@
 		</div>
 		<div class="clearfix"></div>
 		<div id="order-cart">
-			<div class="order-item">
-				<h2>Cơm trắng muối vừng</h2>
+			<div 
+				class="order-item" 
+				ng-repeat="item in Ordering.order track by $index"
+			>
+				<h2 ng-bind="item.name"></h2>
 				<div class="order-item-price">
-					<p>5.000 đ</p>
+					<p><span ng-bind="formatMoney(item.price*item.quantity)"></span> đ</p>
 				</div>
 				<div class="order-item-delete ninja">
 					<p>Xóa</p>
 				</div>
 				<div class="order-item-quantity">
-					<a href="#"><b class="quantity-inc"></b></a>
-					<span>1</span>
-					<a href="#"><b class="quantity-dec"></b></a>
+					<a ng-click="Ordering.increaseItem($index)"><b class="quantity-inc"></b></a>
+					<span ng-bind="item.quantity"></span>
+					<a ng-click="Ordering.decreaseItem($index)"><b class="quantity-dec"></b></a>
 				</div>				
 			</div>
-			<div class="order-item">
+			<!-- <div class="order-item">
 				<h2>Cơm trắng muối vừng</h2>
 				<div class="order-item-price ninja">
 					<p>5.000 đ</p>
@@ -150,7 +153,7 @@
 					<span>1</span>
 					<a href="#"><b class="quantity-dec"></b></a>
 				</div>				
-			</div>
+			</div> -->
 		</div>
 		<div id="order-discount">
 			<div class="order-discount-default">
@@ -166,7 +169,7 @@
 		<div id="order-summary">
 			<label>Tổng tiền:</label>
 			<div class="order-summary-value">
-				<p>56.365 đ</p>
+				<p><span ng-bind="formatMoney(Ordering.totalCost())"></span> đ</p>
 			</div>
 			<div class="clearfix"></div>
 		</div>

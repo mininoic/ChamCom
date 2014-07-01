@@ -1,4 +1,4 @@
-angular.module('ChamCom').controller('OrderCtrl',function($location, $scope, User, Ordering, Categories, Menu){
+angular.module('ChamCom').controller('OrderCtrl',function($location, $scope, User, Ordering, Categories, Menu, Discount){
 	$scope.User = User;
 	$scope.Ordering = Ordering;
 	$scope.Categories = Categories;
