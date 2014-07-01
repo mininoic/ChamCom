@@ -5,8 +5,11 @@ angular.module('ChamCom').factory('Discount',function($timeout) {
 		currentDiscountLoaded: false
 	};
 
+	var t;
+
 	var decreaseDiscount = function(){
-		Discount.currentDiscount = Discount.currentDiscount - 0.0001;
+		Discount.currentDiscount = Discount.currentDiscount - 0.000001*(Date.now()-t);
+		t = Date.now();
 		if (Discount.currentDiscount > 0) $timeout(decreaseDiscount,100);
 		else Discount.currentDiscount = 0;
 	};
@@ -14,6 +17,7 @@ angular.module('ChamCom').factory('Discount',function($timeout) {
 	// Load currentDiscount
 	$timeout(function(){
 		Discount.currentDiscountLoaded = true;
+		t = Date.now();
 		$timeout(decreaseDiscount,100);
 	},1000);
 
