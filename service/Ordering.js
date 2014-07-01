@@ -1,15 +1,28 @@
 angular.module('ChamCom').factory('Ordering',function() {
 
 	var Ordering = {
-		order: [{
-			"id": 0,
-			"name": "Mỳ xào ốc tỏi",
-			"desc": "Sợi mì chín vừa, không quá mềm. Ốc tỏi cắt miếng xào chung với mì và rau muống nên cũng đỡ ngán.",
-			"img": "img/item/1232433132.jpg",
-			"price": 40000,
-			"category": [0,1,2,3],
-			"quantity": 1
-		}],
+		order: [],
+		addItem: function(item){
+			var order = this.order,
+				hasItem = false,
+				i = order.length - 1;
+			for (; i >= 0; i--) {
+				if (order[i].id===item.id) {
+					hasItem = true;
+					break;
+				}
+			}
+			if (hasItem) {
+				this.increaseItem(i);
+			} else {
+				var _item = JSON.parse(JSON.stringify(item));
+				_item.quantity = 1;
+				order.push(_item); 
+			}
+		},
+		deleteItem: function(itemIndex) {
+			this.order.splice(itemIndex,1);
+		},
 		increaseItem: function(itemIndex) {
 			this.order[itemIndex].quantity++;
 		},

@@ -26,8 +26,13 @@
 			</ul> -->
 			<div class="discount-countdown">
 				<h3>mức chiết khấu</h3>
-				<p>(đang giảm)</p>
-				<p class="discount-value">37,79%</p>
+				<p ng-if="Discount.currentDiscountLoaded">(đang giảm)</p>
+				<p class="discount-value">
+					<span ng-if="Discount.currentDiscountLoaded">
+						<span ng-bind="Discount.currentDiscount.toFixed(4)+'%'"><span>
+					<span>
+					<span ng-if="!Discount.currentDiscountLoaded">Đang tải</span>
+				</p>
 				<a class="term" href="#">chính sách chiết khấu</a>
 			</div>
 		</div>
@@ -86,7 +91,7 @@
 					<p ng-bind="item.desc"></p>
 				</div>
 				<div class="item-meta">
-					<a href="#" class="add-to-cart">+</a>
+					<a ng-click="Ordering.addItem(item)" class="add-to-cart">+</a>
 					<a href="#" class="show-info">i</a>
 				</div>
 			</div>
@@ -109,57 +114,43 @@
 		</div>
 		<div class="clearfix"></div>
 		<div id="order-cart">
-			<div 
-				class="order-item" 
+			<div class="order-item" 
 				ng-repeat="item in Ordering.order track by $index"
+				ng-init="mouseOver=false"
+				ng-mouseenter="mouseOver=true"
+				ng-mouseleave="mouseOver=false"
 			>
 				<h2 ng-bind="item.name"></h2>
-				<div class="order-item-price">
+				<div class="order-item-price" 
+					
+				>
 					<p><span ng-bind="formatMoney(item.price*item.quantity)"></span> đ</p>
-				</div>
-				<div class="order-item-delete ninja">
-					<p>Xóa</p>
 				</div>
 				<div class="order-item-quantity">
 					<a ng-click="Ordering.increaseItem($index)"><b class="quantity-inc"></b></a>
 					<span ng-bind="item.quantity"></span>
-					<a ng-click="Ordering.decreaseItem($index)"><b class="quantity-dec"></b></a>
-				</div>				
-			</div>
-			<!-- <div class="order-item">
-				<h2>Cơm trắng muối vừng</h2>
-				<div class="order-item-price ninja">
-					<p>5.000 đ</p>
+					<a 
+						ng-click="Ordering.decreaseItem($index)"
+						ng-show="item.quantity>1"
+					>
+						<b class="quantity-dec"></b>
+					</a>
 				</div>
-				<div class="order-item-delete">
+				<div class="order-item-delete ninja-slide" 
+					ng-class="{'ninja-slide-hidden':!mouseOver}"
+					ng-click="Ordering.deleteItem($index)"
+				>
 					<p>Xóa</p>
 				</div>
-				<div class="order-item-quantity">
-					<a href="#"><b class="quantity-inc"></b></a>
-					<span>1</span>
-					<a href="#"><b class="quantity-dec"></b></a>
-				</div>				
 			</div>
-			<div class="order-item">
-				<h2>Cơm trắng muối vừng</h2>
-				<div class="order-item-price">
-					<p>5.000 đ</p>
-				</div>
-				<div class="order-item-delete ninja">
-					<p>Xóa</p>
-				</div>
-				<div class="order-item-quantity">
-					<a href="#"><b class="quantity-inc"></b></a>
-					<span>1</span>
-					<a href="#"><b class="quantity-dec"></b></a>
-				</div>				
-			</div> -->
 		</div>
 		<div id="order-discount">
 			<div class="order-discount-default">
 				<label>Chiết khấu:</label>
 				<div class="order-discount-value">
-					<p>-39.243 đ</p>
+					<p>
+						<span ng-bind="formatMoney(-Ordering.totalCost()*Discount.currentDiscount/100)"></span>
+						 đ</p>
 				</div>
 			</div>
 			<div class="order-discount-coupon">
@@ -169,7 +160,7 @@
 		<div id="order-summary">
 			<label>Tổng tiền:</label>
 			<div class="order-summary-value">
-				<p><span ng-bind="formatMoney(Ordering.totalCost())"></span> đ</p>
+				<p><span ng-bind="formatMoney(Ordering.totalCost()*(100-Discount.currentDiscount)/100)"></span> đ</p>
 			</div>
 			<div class="clearfix"></div>
 		</div>

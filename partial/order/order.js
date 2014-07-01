@@ -3,6 +3,7 @@ angular.module('ChamCom').controller('OrderCtrl',function($location, $scope, Use
 	$scope.Ordering = Ordering;
 	$scope.Categories = Categories;
 	$scope.Menu = Menu;
+	$scope.Discount = Discount;
 	$scope.formatMoney = function(money) {
 		return accounting.formatMoney(money,"",0,".");
 	};
