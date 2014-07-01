@@ -64,16 +64,4 @@
 	"img": "img/item/132421312.jpg",
 	"price": 45000,
 	"category": [1,4,5]
-},{
-	"name": "Miến xào bò",
-	"desc": "Ngonnn mỗi tội hơi ít thịt bò =)) Mình hay ăn ở quán chị Nui nhé quán mà bên trong có cái shop với chỗ để xe ấy :x",
-	"img": "img/item/1403980132683.jpg",
-	"price": 25000,
-	"category": [0,2,5]
-},{
-	"name": "Crepe Chocolate",
-	"desc": "#lozi Crepe hơi cháy cơ mà ăn giòn giòn ^^! Ở đây mình được chọn seasonal fruits với topping, mình đi cuối tháng 6, chỉ có xoài với táo thôi. Trong hình là chocolate và ở trong là xoài ^^!",
-	"img": "img/item/1404058255874.jpg",
-	"price": 55000,
-	"category": [3,4,5]
 }]

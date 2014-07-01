@@ -1,4 +1,4 @@
-angular.module('ChamCom').factory('Menu',function(Indexer, $http, $q, $timeout, MockData) {
+angular.module('ChamCom').factory('Menu',function(Indexer, $http) {
 	var Menu = {
 		list: [],
 		currentCategory: [],
@@ -10,10 +10,9 @@ angular.module('ChamCom').factory('Menu',function(Indexer, $http, $q, $timeout, 
 				Indexer.indexArrayObject(_this.list, [
 					'name','price','desc'
 				]);
-				deferred.resolve();
-			},100);
+			});
 		},
-		getCategory: function(categoryId){
+		getCategory: function(categoryId) {
 			var list = this.list;
 			this.currentCategory = [];
 
@@ -25,6 +24,23 @@ angular.module('ChamCom').factory('Menu',function(Indexer, $http, $q, $timeout, 
 			}
 
 			return this;
+		},
+		getAll: function() {
+			return this.list.slice();			
+		},
+		sort: function(list, categoryId) {
+			var sorted = [];
+
+			for (var i = list.length - 1; i >= 0; i--) {
+				var item = list[i];
+				if (_.contains(item.category,categoryId)) {
+					sorted.unshift(list[i]);
+				} else {
+					sorted.push(list[i]);
+				}
+			}
+
+			return sorted;
 		}
 	};
 

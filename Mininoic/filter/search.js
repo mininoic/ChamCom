@@ -12,24 +12,13 @@ angular.module('Mininoic').filter('search', function(Indexer) {
 			}
 			if (term) {
 				term = Indexer.unSign(term);
-				if (option.fuse && term) {
-					var keys = option.keys;
-					if (keys) {
-						if (option.notPrefixed) {
-							option.keys = Indexer.prefix(keys);
-						}
-						return new Fuse(items, option).search(term);
-					}
-				} else if(term) {
-					var searchWords = term.split(' ');
-					return _.filter(items, function (item) {
-						var itemText = _.values(item).join(' ').toLowerCase();
-			
-						return _.every(searchWords, function (searchWord) {
-							return itemText.search(searchWord.toLowerCase()) !== -1;
-						});
+				var searchWords = term.split(' ');
+				return _.filter(items, function (item) {
+					var itemText = _.values(item).join(' ').toLowerCase();
+					return _.every(searchWords, function (searchWord) {
+						return itemText.search(searchWord.toLowerCase()) !== -1;
 					});
-				}
+				});
 			}
 		}
 		return items;

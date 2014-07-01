@@ -1,8 +1,8 @@
 {
     "eqeqeq": true,
     "immed": true,
-    "latedef": true,
     "newcap": true,
+    "latedef": true,
     "noarg": true,
     "sub": true,
     "boss": true,
