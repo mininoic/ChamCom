@@ -13,7 +13,6 @@ angular.module('ChamCom').factory('Categories',function(Menu, $http) {
 		},
 		activate: function(categoryId) {
 			this.activeCategory = categoryId;
-			Menu.getCategory(categoryId);
 		}
 	};
 

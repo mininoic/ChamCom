@@ -72,7 +72,7 @@
 	<div class="menu-wrapper">
 		<div 
 			class="menu-item"
-			ng-repeat = "item in Menu.currentCategory | menuOrder: itemSearch | search: itemSearch"
+			ng-repeat = "item in Menu.list | menuOrder: itemSearch | search: itemSearch"
 		>
 			<div class="item-left">
 				<img ng-src="{{item.img}}">
