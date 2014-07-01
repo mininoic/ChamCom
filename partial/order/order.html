@@ -1,26 +1,26 @@
 <header>
 	<nav id="navbar">
 		<div class="brand">
-			<div id="logo"><a href="#">.Cơm</a></div>
+			<div id="logo"><a>.Cơm</a></div>
 			<p>ngon mỗi ngày</p>
 		</div>
-		<div class="nav-info" ng-class="{hidden:!_User.fetched}">
+		<div class="nav-info fade-in" ng-class="{'fade-in-animate':_User.fetched}">
 			<span>
-				Bạn đã tiết kiệm:
+				bạn đã tiết kiệm:
 				<span class="yellow" 
 					ng-bind="formatMoney(User.saving)"
 				></span>
-				đ | Bạn có: 
+				đ | bạn có: 
 				<span class="yellow"
 					ng-bind="formatMoney(User.balance)"
 				></span> đ
 			</span>
 		</div>
 		<div class="nav-user">
-			<a href="#" class="user"><img src="img/user.png"></a>
+			<a class="user"><img src="img/user.png"></a>
 			<ul class="user-menu">
-				<li><a href="#">nạp tiền</a></li>
-				<li><a href="#">hỗ trợ</a></li>
+				<li><a>nạp tiền</a></li>
+				<li><a>hỗ trợ</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -29,23 +29,23 @@
 	<div class="left-wrapper">
 		<div class="discount">
 			<!-- <ul class="promo-menu">
-				<li id="feature"><a href="#">món nổi bật</a></li>
-				<li id="recommend"><a href="#">thực đơn gợi ý</a></li>
-				<li id="priceoff"><a href="#">khuyến mại</a></li>
+				<li id="feature"><a>món nổi bật</a></li>
+				<li id="recommend"><a>thực đơn gợi ý</a></li>
+				<li id="priceoff"><a>khuyến mại</a></li>
 			</ul> -->
 			<div class="discount-countdown">
 				<h3>mức chiết khấu</h3>
+				<p ng-if="!Discount.currentDiscountLoaded">(đang tải)</p>
 				<p ng-if="Discount.currentDiscountLoaded">(đang giảm)</p>
 				<p class="discount-value">
-					<span ng-if="Discount.currentDiscountLoaded">
+					<span class=" fade-in" ng-class="{'fade-in-animate':Discount.currentDiscountLoaded}">
 						<span ng-bind="Discount.currentDiscount.toFixed(4)+'%'"><span>
 					<span>
-					<span ng-if="!Discount.currentDiscountLoaded">Đang tải</span>
 				</p>
-				<a class="term" href="#">chính sách chiết khấu</a>
+				<a class="term">chính sách chiết khấu</a>
 			</div>
 		</div>
-		<div class="menu-cat" ng-if="Ordering.choosing">
+		<div class="menu-cat">
 			<ul>
 				<li 
 					ng-repeat="category in Categories.list track by $index"
@@ -65,7 +65,7 @@
 	</div>
 </section>
 <section id="center-bar">
-	<div class="top-wrapper">
+	<div class="top-wrapper fade-in" ng-class="{'fade-in-animate':Menu.fetched}">
 		<div class="search">
 			<input 
 				type="text" 
@@ -77,7 +77,7 @@
 		</div>
 		<div class="arrange">
 			<label>Sắp xếp theo:</label>
-			<span><a href="#">một cách nào đó <b class="caret"></b></a></span>
+			<span><a>một cách nào đó <b class="caret"></b></a></span>
 			<div class="option">
 
 			</div>
@@ -101,7 +101,7 @@
 				</div>
 				<div class="item-meta">
 					<a ng-click="Ordering.addItem(item)" class="add-to-cart">+</a>
-					<a href="#" class="show-info">i</a>
+					<a class="show-info">i</a>
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -111,14 +111,14 @@
 <section id="right-bar">
 	<div class="right-wrapper">
 		<div id="order-info">
-			<div class="customer">
-				<h3>Vừ Già Pó</h3>
-				<p>0982385293</p>
-				<p>40/12 Võ Văn Lục</p>
+			<div class="customer fade-in" ng-class="{'fade-in-animate':_User.fetched}">
+				<h3 ng-bind="User.name"></h3>
+				<p ng-bind="User.mobile"></p>
+				<p ng-bind="User.address"></p>
 			</div>
 			<div class="order-date">
-				<p><a href="#">đơn hàng đã đặt</a></p>
-				<p>ngày: <a href="#">18/06/2014</a></p>
+				<p><a>đơn hàng đã đặt</a></p>
+				<p>ngày: <a>{{Date.getDate()}}/{{Date.getMonth()+1}}/{{Date.getFullYear()}}</a></p>
 			</div>
 		</div>
 		<div class="clearfix"></div>
@@ -174,7 +174,7 @@
 			<div class="clearfix"></div>
 		</div>
 		<div id="order-checkout">
-			<a href="#" class="button cancel">Hủy đơn</a>
+			<a class="button cancel">Hủy đơn</a>
 			<a href="bill.html" class="button checkout">Đặt cơm</a>
 		</div>
 	</div>

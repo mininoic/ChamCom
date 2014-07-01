@@ -8,12 +8,12 @@ angular.module('ChamCom').config(function($stateProvider, $urlRouterProvider, $l
         templateUrl: 'partial/order/order.html',
         controller: 'OrderCtrl',
     });
-    $stateProvider.state('order.order', {
+    $stateProvider.state('order.choose', {
         url: '/choose',
         views: {
-            "header": {
-                templateUrl: 'partial/signedIn/header/header.html',
-                controller: 'HeaderCtrl'
+            'left': {
+                templateUrl: 'partial/order/category/category.html',
+                controller: 'CategoryCtrl'
             }
         }
     });

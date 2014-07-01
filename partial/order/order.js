@@ -1,4 +1,5 @@
-angular.module('ChamCom').controller('OrderCtrl',function($location, $scope, $timeout, User, Ordering, Categories, Menu, Discount){
+angular.module('ChamCom').controller('OrderCtrl',function($location, $scope, $timeout, User, Ordering, Categories, Menu, Discount, $state){
+	console.log($state);
 	User.fetch().then(function(){
 		$scope.User = User.info;
 	});
@@ -7,6 +8,7 @@ angular.module('ChamCom').controller('OrderCtrl',function($location, $scope, $ti
 	$scope.Categories = Categories;
 	$scope.Menu = Menu;
 	$scope.Discount = Discount;
+	$scope.Date = new Date();
 	$scope.formatMoney = function(money) {
 		return accounting.formatMoney(money,"",0,".");
 	};

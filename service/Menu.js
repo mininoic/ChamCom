@@ -17,7 +17,7 @@ angular.module('ChamCom').factory('Menu',function(Indexer, $http) {
 				Indexer.indexArrayObject(Menu.list, [
 					'name','price','desc'
 				]);
-				Menu.fetch = true;
+				Menu.fetched = true;
 			});
 		},
 		// Return the list of menu for current category

@@ -39,7 +39,7 @@ angular.module('ChamCom').factory('Ordering',function() {
 			}
 			return money;
 		},
-		choosing: true,
+		choosing: 0,
 	};
 
 	return Ordering;

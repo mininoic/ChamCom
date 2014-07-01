@@ -26,6 +26,18 @@
 .ninja-slide-hidden {
 	width: 0!important;
 }
+
+.fade-in {
+	opacity: 0;
+	-webkit-transition:0.4s all ease;
+    -moz-transition:0.4s all ease;
+    -o-transition:0.4s all ease;
+    transition:0.4s all ease;
+}
+
+.fade-in-animate {
+	opacity: 1;
+}
 /*=============== NAV =================*/
 
 #navbar {
@@ -67,18 +79,8 @@
 
 .nav-info {
 	float: left;
-	opacity: 1;
-	-webkit-transition:0.2s all ease;
-    -moz-transition:0.2s all ease;
-    -o-transition:0.2s all ease;
-    transition:0.2s all ease;
-    overflow: hidden;
     height: 58px;
     line-height: 58px;
-}
-
-.nav-info.hidden {
-	opacity: 0;
 }
 
 .yellow {
@@ -170,8 +172,8 @@
 .menu-cat {
 	background: @light-grey;
 	margin-top: 20px;
-	-webkit-box-shadow:inset -1px 0 5px 0 rgba(0,0,0,0.1);
-	box-shadow:inset -1px 0 5px 0 rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0px 0 5px -1px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0 5px -1px rgba(0, 0, 0, 0.2);
 }
 .menu-cat ul {
 	list-style: none;
@@ -183,14 +185,15 @@
 .menu-cat ul li a:hover, .menu-cat ul li a.actived {
 	background: @white;
 	color: @red;
-	-webkit-box-shadow: 0 1px 0 0 #ddd;
-	box-shadow: 0 1px 0 0 #ddd;
+	-webkit-box-shadow: 0 1px 0 0 #ddd inset;
+	box-shadow: 0 -1px 0 0 #ddd inset;
 }
 .menu-cat ul li a {
 	text-decoration: none;
 	color: #8a8a8a;
 	display: block;
 	padding: 10px 30px;
+
 }
 .contact p {
 	margin: 10px;
