@@ -4,8 +4,17 @@
 			<div id="logo"><a href="#">.Cơm</a></div>
 			<p>ngon mỗi ngày</p>
 		</div>
-		<div class="nav-info">
-			<span>Bạn đã tiết kiệm: <span class="yellow" ng-bind="User.saving"></span> | Bạn có: <span class="yellow">2 triệu đ</span></span>				
+		<div class="nav-info" ng-class="{hidden:!_User.fetched}">
+			<span>
+				Bạn đã tiết kiệm:
+				<span class="yellow" 
+					ng-bind="formatMoney(User.saving)"
+				></span>
+				đ | Bạn có: 
+				<span class="yellow"
+					ng-bind="formatMoney(User.balance)"
+				></span> đ
+			</span>
 		</div>
 		<div class="nav-user">
 			<a href="#" class="user"><img src="img/user.png"></a>

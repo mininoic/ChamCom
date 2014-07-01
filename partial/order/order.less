@@ -18,7 +18,10 @@
 }
 .ninja-slide {
 	overflow: hidden;
-	transition: 0.2s all ease;
+	-webkit-transition:0.2s all ease;
+    -moz-transition:0.2s all ease;
+    -o-transition:0.2s all ease;
+    transition:0.2s all ease;
 }
 .ninja-slide-hidden {
 	width: 0!important;
@@ -58,12 +61,26 @@
 .brand p {
 	float: left;
 	margin-left: 10px;
+	height: 26px;
+    line-height: 26px;
 }
 
 .nav-info {
-	margin: 12px;
 	float: left;
+	opacity: 1;
+	-webkit-transition:0.2s all ease;
+    -moz-transition:0.2s all ease;
+    -o-transition:0.2s all ease;
+    transition:0.2s all ease;
+    overflow: hidden;
+    height: 58px;
+    line-height: 58px;
 }
+
+.nav-info.hidden {
+	opacity: 0;
+}
+
 .yellow {
 	color: @yellow;
 }

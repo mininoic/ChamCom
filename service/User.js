@@ -1,20 +1,16 @@
-angular.module('ChamCom').factory('User',function() {
-	var savingString = '',
-		savingParse = function(saving){
-			savingString = '69 triệu đ';
-		},
-		update = function(scope, callback){
-			var saving = 69000005;
-			savingParse(saving);
-			if (callback) callback(saving);
-			if (scope) scope.$apply();
-		};
-
-	update(null, null);
+angular.module('ChamCom').factory('User',function($http, $timeout) {
 
 	var User = {
-		saving: savingString,
-		update: update
+		info: {},
+		fetched: false,
+		fetch: function(){
+			this.fetched = false;
+			return $http.get('MockData/User.json')
+			.then(function(data){
+				User.info = data.data;
+				User.fetched = true;
+			});
+		}
 	};
 
 	return User;

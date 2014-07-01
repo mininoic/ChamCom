@@ -3,12 +3,14 @@ angular.module('ChamCom').factory('Categories',function(Menu, $http) {
 	var Categories = {
 		list: [],
 		activeCategory: 1,
+		fetched: false,
 		fetch: function(callback){
-			var _this = this;
+			this.fetch = false;
 			return $http.get('MockData/Categories.json')
 			.then(function(data){
-				_this.list = data.data;
-				_this.activate(_this.activeCategory);
+				Categories.list = data.data;
+				Categories.activate(Categories.activeCategory);
+				Categories.fetch = true;
 			});
 		},
 		activate: function(categoryId) {

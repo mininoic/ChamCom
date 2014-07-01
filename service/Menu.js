@@ -5,17 +5,19 @@ angular.module('ChamCom').factory('Menu',function(Indexer, $http) {
 	var Menu = {
 		// The entire list of menu
 		list: [],
+		fetched: false,
 		//Fetch the menu from server
 		fetch: function(){
-			var _this = this;
+			this.fetch = false;
 			// Replace the get link here
 			return $http.get('MockData/Menu.json')
 			.then(function(data){
-				_this.list = data.data;
+				Menu.list = data.data;
 				// Indexing fields for searching
-				Indexer.indexArrayObject(_this.list, [
+				Indexer.indexArrayObject(Menu.list, [
 					'name','price','desc'
 				]);
+				Menu.fetch = true;
 			});
 		},
 		// Return the list of menu for current category
