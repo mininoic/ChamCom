@@ -1,4 +1,12 @@
-<div class="col-md-12" ng-controller="CategoryCtrl">
-
-
-</div>
+<div class="menu-cat"><ul>
+	<li 
+		ng-repeat="category in Categories.list track by $index"
+	>
+		<a
+			ng-class="{actived:$index==Categories.activeCategory}"
+			ng-click="Categories.activate(category.id)"
+		>
+			{{category.title}}
+		</a>
+	</li>
+</ul></div>

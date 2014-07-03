@@ -8,7 +8,7 @@ angular.module('ChamCom').factory('Menu',function(Indexer, $http) {
 		fetched: false,
 		//Fetch the menu from server
 		fetch: function(){
-			this.fetch = false;
+			this.fetched = false;
 			// Replace the get link here
 			return $http.get('MockData/Menu.json')
 			.then(function(data){

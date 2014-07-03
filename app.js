@@ -17,6 +17,15 @@ angular.module('ChamCom').config(function($stateProvider, $urlRouterProvider, $l
             }
         }
     });
+    $stateProvider.state('order.bill', {
+        url: '/bill',
+        views: {
+            'left': {
+                templateUrl: 'partial/order/billDiscount/billDiscount.html',
+                controller: 'BilldiscountCtrl'
+            }
+        }
+    });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/order/choose');
 

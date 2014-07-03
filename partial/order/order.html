@@ -36,31 +36,16 @@
 			<div class="discount-countdown">
 				<h3>mức chiết khấu</h3>
 				<p ng-if="!Discount.currentDiscountLoaded">(đang tải)</p>
-				<p ng-if="Discount.currentDiscountLoaded">(đang giảm)</p>
+				<!-- <p ng-if="Discount.currentDiscountLoaded&&!Discount.freeze">(đang giảm)</p> -->
 				<p class="discount-value">
-					<span class=" fade-in" ng-class="{'fade-in-animate':Discount.currentDiscountLoaded}">
-						<span ng-bind="Discount.currentDiscount.toFixed(4)+'%'"><span>
+					<span class="fade-in" ng-class="{'fade-in-animate':Discount.currentDiscountLoaded}">
+						<span ng-bind="Discount.getDiscount().toFixed(4)+'%'"><span>
 					<span>
 				</p>
 				<a class="term">chính sách chiết khấu</a>
 			</div>
 		</div>
-		<div class="menu-cat">
-			<ul>
-				<li 
-					ng-repeat="category in Categories.list track by $index"
-				>
-					<a
-						ng-class="{actived:$index==Categories.activeCategory}"
-						ng-click="Categories.activate(category.id)"
-					>
-						{{category.title}}
-					</a>
-				</li>
-			</ul>
-		</div>
-		<div class="contact">
-			<p>Hotline: 0988843142</p>
+		<div ui-view="left">
 		</div>
 	</div>
 </section>
@@ -158,7 +143,7 @@
 				<label>Chiết khấu:</label>
 				<div class="order-discount-value">
 					<p>
-						<span ng-bind="formatMoney(-Ordering.totalCost()*Discount.currentDiscount/100)"></span>
+						<span ng-bind="formatMoney(-Ordering.totalCost()*Discount.getDiscount()/100)"></span>
 						 đ</p>
 				</div>
 			</div>
@@ -169,13 +154,13 @@
 		<div id="order-summary">
 			<label>Tổng tiền:</label>
 			<div class="order-summary-value">
-				<p><span ng-bind="formatMoney(Ordering.totalCost()*(100-Discount.currentDiscount)/100)"></span> đ</p>
+				<p><span ng-bind="formatMoney(Ordering.totalCost()*(100-Discount.getDiscount())/100)"></span> đ</p>
 			</div>
 			<div class="clearfix"></div>
 		</div>
 		<div id="order-checkout">
-			<a class="button cancel">Hủy đơn</a>
-			<a href="bill.html" class="button checkout">Đặt cơm</a>
+			<a class="button cancel" ng-click="backButton()">Hủy đơn</a>
+			<a class="button checkout" ng-click="orderButton()">Đặt cơm</a>
 		</div>
 	</div>
 </section>

@@ -38,6 +38,32 @@
 .fade-in-animate {
 	opacity: 1;
 }
+
+[ui-view] {
+	&.ng-enter, 
+	&.ng-leave
+	{ 
+	  -webkit-transition: 0.2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	  -moz-transition: 0.2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	  -ms-transition: 0.2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	  -o-transition: 0.2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	  transition: 0.2s cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	  position: absolute;
+	  overflow: hidden;
+	} 
+	 
+	&.ng-enter.ng-enter-active,
+	&.ng-leave {
+	  opacity: 1;
+	  right: 0;
+	}
+	 
+	&.ng-leave.ng-leave-active,
+	&.ng-enter {
+	  opacity: 1;
+	  right: -100%;
+	}
+}
 /*=============== NAV =================*/
 
 #navbar {

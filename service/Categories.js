@@ -10,15 +10,13 @@ angular.module('ChamCom').factory('Categories',function(Menu, $http) {
 			.then(function(data){
 				Categories.list = data.data;
 				Categories.activate(Categories.activeCategory);
-				Categories.fetch = true;
+				Categories.fetched = true;
 			});
 		},
 		activate: function(categoryId) {
 			this.activeCategory = categoryId;
 		}
 	};
-
-	Categories.fetch();
 
 	return Categories;
 });
