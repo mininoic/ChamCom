@@ -19,12 +19,24 @@ angular.module('ChamCom').controller('OrderCtrl',function($location, $scope, $ti
 		return accounting.formatMoney(money,"",0,".");
 	};
 	$scope.orderButton = function(){
-		if ($state.is("order.choose")) $state.go("order.bill");
+		if ($state.is("order.choose")&&Ordering.order&&Ordering.order.length) $state.go("order.bill");
+	};
+	$scope.orderButtonText = function(){
+		if ($state.is("order.choose")) return "Đặt cơm";
+		else if ($state.is("order.bill")) return "Xác nhận";
 	};
 	$scope.backButton = function(){
 		if ($state.is("order.bill")) $state.go("order.choose");
 	};
-	if (!Ordering.menu) {
+	$scope.backButtonText = function(){
+		if ($state.is("order.choose")) return "Hủy đơn";
+		else if ($state.is("order.bill")) return "Quay lại";
+	};
+	$scope.allowEdit = function(){
+		if ($state.is("order.choose")) return true;
+		else return false;
+	};
+	if (!Ordering.order||!Ordering.order.length) {
 		$location.path('/order/choose');
 	}
 });

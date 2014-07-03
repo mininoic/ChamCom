@@ -14,6 +14,10 @@ angular.module('ChamCom').config(function($stateProvider, $urlRouterProvider, $l
             'left': {
                 templateUrl: 'partial/order/category/category.html',
                 controller: 'CategoryCtrl'
+            },
+            'center': {
+                templateUrl: 'partial/order/Menu/Menu.html',
+                controller: 'MenuCtrl'
             }
         }
     });
@@ -23,6 +27,10 @@ angular.module('ChamCom').config(function($stateProvider, $urlRouterProvider, $l
             'left': {
                 templateUrl: 'partial/order/billDiscount/billDiscount.html',
                 controller: 'BilldiscountCtrl'
+            },
+            'center': {
+                templateUrl: 'partial/order/Checkout/Checkout.html',
+                controller: 'CheckoutCtrl'
             }
         }
     });

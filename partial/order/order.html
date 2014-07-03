@@ -49,49 +49,7 @@
 		</div>
 	</div>
 </section>
-<section id="center-bar">
-	<div class="top-wrapper fade-in" ng-class="{'fade-in-animate':Menu.fetched}">
-		<div class="search">
-			<input 
-				type="text" 
-				class="s" 
-				placeholder="tìm kiếm món ăn" 
-				ng-model="itemSearch"
-				ng-change="loadAllCategory()"
-			>
-		</div>
-		<div class="arrange">
-			<label>Sắp xếp theo:</label>
-			<span><a>một cách nào đó <b class="caret"></b></a></span>
-			<div class="option">
-
-			</div>
-		</div>
-	</div>
-	<div class="menu-wrapper">
-		<div 
-			class="menu-item"
-			ng-repeat = "item in Menu.list | menuOrder: itemSearch | search: itemSearch"
-		>
-			<div class="item-left">
-				<img ng-src="{{item.img}}">
-				<p class="item-price">
-					<span ng-bind="formatMoney(item.price)"></span> đ
-				</p>
-			</div>
-			<div class="item-right">					
-				<div class="item-content">
-					<h2 ng-bind="item.name"></h2>
-					<p ng-bind="item.desc"></p>
-				</div>
-				<div class="item-meta">
-					<a ng-click="Ordering.addItem(item)" class="add-to-cart">+</a>
-					<a class="show-info">i</a>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
+<section id="center-bar" ui-view="center">
 </section>
 <section id="right-bar">
 	<div class="right-wrapper">
@@ -120,7 +78,7 @@
 				>
 					<p><span ng-bind="formatMoney(item.price*item.quantity)"></span> đ</p>
 				</div>
-				<div class="order-item-quantity">
+				<div class="order-item-quantity" ng-if="allowEdit()">
 					<a ng-click="Ordering.increaseItem($index)"><b class="quantity-inc"></b></a>
 					<span ng-bind="item.quantity"></span>
 					<a 
@@ -133,6 +91,7 @@
 				<div class="order-item-delete ninja-slide" 
 					ng-class="{'ninja-slide-hidden':!mouseOver}"
 					ng-click="Ordering.deleteItem($index)"
+					ng-if="allowEdit()"
 				>
 					<p>Xóa</p>
 				</div>
@@ -159,8 +118,8 @@
 			<div class="clearfix"></div>
 		</div>
 		<div id="order-checkout">
-			<a class="button cancel" ng-click="backButton()">Hủy đơn</a>
-			<a class="button checkout" ng-click="orderButton()">Đặt cơm</a>
+			<a class="button cancel" ng-click="backButton()" ng-bind="backButtonText()"></a>
+			<a class="button checkout" ng-click="orderButton()" ng-bind="orderButtonText()"></a>
 		</div>
 	</div>
 </section>

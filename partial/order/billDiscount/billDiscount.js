@@ -1,3 +1,5 @@
-angular.module('ChamCom').controller('BilldiscountCtrl',function($scope, Discount){
-	Discount.setDiscount(Discount.currentDiscount);
+angular.module('ChamCom').controller('BilldiscountCtrl',function($scope, Discount, $timeout){
+	$timeout(function(){
+		Discount.setDiscount(Discount.currentDiscount);
+	},1000);
 });
