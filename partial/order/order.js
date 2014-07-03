@@ -27,6 +27,9 @@ angular.module('ChamCom').controller('OrderCtrl',function($location, $scope, $ti
 	};
 	$scope.backButton = function(){
 		if ($state.is("order.bill")) $state.go("order.choose");
+		else if ($state.is("order.choose")) {
+			Ordering.order = [];
+		}
 	};
 	$scope.backButtonText = function(){
 		if ($state.is("order.choose")) return "Hủy đơn";

@@ -327,6 +327,7 @@
 	font-size: 20px;
 	-webkit-box-shadow: 1px 1px 0 0 rgba(0,0,0,0.2);
 	box-shadow: 1px 1px 0 0 rgba(0,0,0,0.2);
+	cursor: pointer;
 }
 .item-meta a:hover {
 	background: @dark-yellow;
@@ -416,6 +417,15 @@
 	  top: -50px;
 	  height: 0px;
 	}
+
+	&.ng-enter-stagger,
+	&.ng-leave-stagger{
+	  -webkit-transition-delay:0.1s;
+	  -moz-transition-delay:0.1s;
+	  -ms-transition-delay:0.1s;
+	  -o-transition-delay:0.1s;
+	  transition-delay:0.1s;
+	}
 }
 
 .order-item h2 {
@@ -450,6 +460,7 @@
 	border-left: 4px solid transparent;
 	color: @white !important;
 	margin-top: -13px;
+	cursor: pointer;
 }
 .quantity-inc {	border-bottom: 4px solid; }
 .quantity-dec {	border-top: 4px solid; }
@@ -546,6 +557,7 @@
 	color: @white !important;
 	text-decoration: none;
 	margin: 0 5px;
+	cursor: pointer;
 }
 .cancel { background: @dark-yellow; }
 .cancel:hover { background: @red; }
