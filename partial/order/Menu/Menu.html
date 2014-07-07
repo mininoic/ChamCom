@@ -1,4 +1,4 @@
-<div class="top-wrapper fade-in" ng-class="{'fade-in-animate':Menu.fetched}">
+<div class="top-wrapper">
 	<div class="search">
 		<input 
 			type="text" 
@@ -16,7 +16,7 @@
 		</div>
 	</div>
 </div>
-<div class="menu-wrapper">
+<div class="menu-wrapper fade-in" ng-class="{'fade-in-animate':Menu.fetched}">
 	<div 
 		class="menu-item"
 		ng-repeat = "item in Menu.list | menuOrder: itemSearch | search: itemSearch"
@@ -34,7 +34,8 @@
 			</div>
 			<div class="item-meta">
 				<a ng-click="Ordering.addItem(item)" class="add-to-cart">+</a>
-				<a class="show-info">i</a>
+				<a class="quantity" ng-if="Ordering.has(item.id)" ng-bind="Ordering.get(item.id).quantity"></a>
+				<a ng-click="Ordering.decreaseItemById(item.id)" ng-if="Ordering.has(item.id)" class="remove-from-cart">-</a>
 			</div>
 		</div>
 		<div class="clearfix"></div>

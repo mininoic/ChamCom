@@ -1,4 +1,2 @@
-angular.module('ChamCom').controller('MenuCtrl',function($scope){
-
-
+angular.module('ChamCom').controller('MenuCtrl',function($scope, Ordering){
 });

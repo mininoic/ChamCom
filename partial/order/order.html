@@ -51,7 +51,7 @@
 </section>
 <section id="center-bar" ui-view="center">
 </section>
-<section id="right-bar">
+<section id="right-bar" ng-class="{open: openRight}">
 	<div class="right-wrapper">
 		<div id="order-info">
 			<div class="customer fade-in" ng-class="{'fade-in-animate':_User.fetched}">
@@ -78,20 +78,19 @@
 				>
 					<p><span ng-bind="formatMoney(item.price*item.quantity)"></span> đ</p>
 				</div>
-				<div class="order-item-quantity" ng-if="allowEdit()">
+				<div class="order-item-quantity" 
+					ng-if="allowEdit"
+				>
 					<a ng-click="Ordering.increaseItem($index)"><b class="quantity-inc"></b></a>
 					<span ng-bind="item.quantity"></span>
-					<a 
-						ng-click="Ordering.decreaseItem($index)"
-						ng-show="item.quantity>1"
-					>
-						<b class="quantity-dec"></b>
+					<a ng-click="Ordering.decreaseItem($index)">
+						<b class="quantity-dec" ng-show="item.quantity>1"></b>
 					</a>
 				</div>
 				<div class="order-item-delete ninja-slide" 
 					ng-class="{'ninja-slide-hidden':!mouseOver}"
 					ng-click="Ordering.deleteItem($index)"
-					ng-if="allowEdit()"
+					ng-if="allowEdit"
 				>
 					<p>Xóa</p>
 				</div>
@@ -118,8 +117,14 @@
 			<div class="clearfix"></div>
 		</div>
 		<div id="order-checkout">
-			<a class="button cancel" ng-click="backButton()" ng-bind="backButtonText()"></a>
-			<a class="button checkout" ng-click="orderButton()" ng-bind="orderButtonText()"></a>
+			<a class="button cancel" ng-click="backButton()" ng-bind="data.backButtonText"></a>
+			<a class="button checkout" ng-click="orderButton()" ng-bind="data.orderButtonText"></a>
+		</div>
+	</div>
+	<div class="mobile-only bottom-order-toggle" ng-click="openRight = !openRight">
+		<div>Xem đơn hàng</div>
+		<div>
+			<span ng-bind="formatMoney(Ordering.totalCost()*(100-Discount.getDiscount())/100)"></span> đ
 		</div>
 	</div>
 </section>

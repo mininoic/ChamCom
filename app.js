@@ -10,6 +10,10 @@ angular.module('ChamCom').config(function($stateProvider, $urlRouterProvider, $l
     });
     $stateProvider.state('order.choose', {
         url: '/choose',
+        data: {
+            orderButtonText: 'Đặt cơm',
+            backButtonText: 'Hủy đơn'
+        },
         views: {
             'left': {
                 templateUrl: 'partial/order/category/category.html',
@@ -23,6 +27,10 @@ angular.module('ChamCom').config(function($stateProvider, $urlRouterProvider, $l
     });
     $stateProvider.state('order.bill', {
         url: '/bill',
+        data: {
+            orderButtonText: 'Xác nhận',
+            backButtonText: 'Quay lại'
+        },
         views: {
             'left': {
                 templateUrl: 'partial/order/billDiscount/billDiscount.html',
